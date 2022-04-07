@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main()
+        {
+            double x;
+            Console.Write("Введите X: ");
+            while (!double.TryParse(Console.ReadLine(), out x))
+            {
+                Console.WriteLine("Неверное значение X !");
+                Console.Write("Введите X: ");
+            }
+
+            double s = 1;
+            double xStep = 1;
+            double f = 1;
+            double el;
+
+            uint i = 1;
+            do
+            {
+                f *= i;
+                xStep *= x;
+
+                el = xStep / f;
+
+                s += el;
+
+                i++;
+            } while (Math.Abs(el) > 0.000001);
+
+            Console.WriteLine("Сумма ряда: " + s.ToString("N6"));
+
+            double y = Math.Pow(Math.E, x);
+            Console.WriteLine("y=e^x= " + y);
+            Console.ReadLine();
+        }
+    }
+}
